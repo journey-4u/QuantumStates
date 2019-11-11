@@ -14,6 +14,18 @@ public class SpinHalfSystem extends TwoStateSystem{
         this.c1 = c1;
     }
 
+    public static SpinHalfSystem Add(SpinHalfSystem system1, SpinHalfSystem system2)
+    {
+        SpinHalfSystem ResultantSystem = new SpinHalfSystem(Complex.Add(system1.c0,system2.c0),Complex.Add(system1.c1,system2.c1));
+        return ResultantSystem;
+    }
+
+    public static SpinHalfSystem Multiply(Complex Z, SpinHalfSystem system)
+    {
+        SpinHalfSystem ResultantSystem = new SpinHalfSystem(Complex.Multiply(Z,system.c0),Complex.Multiply(Z,system.c1));
+        return ResultantSystem;
+    }
+
     @Override
     public String toString(){
 
