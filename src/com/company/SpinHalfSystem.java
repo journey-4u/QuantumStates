@@ -4,8 +4,8 @@ public class SpinHalfSystem extends TwoStateSystem{
 
     SpinHalfSystem()
     {
-        this.c0 = c0;
-        this.c1 = c1;
+        this.c0 = new Complex(0,0);
+        this.c1 = new Complex(0,0);
     }
 
     SpinHalfSystem(Complex c0, Complex c1)
