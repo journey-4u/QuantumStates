@@ -204,4 +204,54 @@ public class Complex {
         return Z;
     }
 
+    public static Complex parseComplex(String Zstring)
+    {
+        Zstring = Zstring.replace(" ","");
+        String[] ZstringParts = Zstring.split("\\+");
+
+        double Re = 0;
+        double Im = 0;
+
+        for (int k = 0; k < ZstringParts.length; k++)
+        {
+            if(ZstringParts[k].contains("i"))
+            {
+                try
+                {
+                    Im += Double.parseDouble(ZstringParts[k].replace("i", ""));
+                }
+                catch (NumberFormatException e)
+                {
+                    Im++;
+                }
+            }
+            else
+            {
+                Re += Double.parseDouble(ZstringParts[k]);
+            }
+        }
+
+            Complex Z = new Complex(Re,Im);
+
+            return Z;
+
+        //Still Incomplete
+    }
+
+    public static void parseStringTests()
+    {
+        System.out.println(Complex.parseComplex("2 + 4i"));
+        System.out.println(Complex.parseComplex("2i + 3"));
+        System.out.println(Complex.parseComplex("2i + - 3"));
+        System.out.println(Complex.parseComplex("2 + 2i + 3 + 4i + 1i"));
+        System.out.println(Complex.parseComplex("2"));
+        System.out.println(Complex.parseComplex("4i"));
+        System.out.println(Complex.parseComplex("2 + i"));
+
+            //System.out.println(Complex.parseComplex("2 - 4i"));
+
+
+        //Still Fails Some. Fails if a Minus sign is used, or if 1i is written as just i
+    }
+
 }
