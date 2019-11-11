@@ -17,6 +17,17 @@ public class TwoStateSystem {
         this.c1 = c1;
     }
 
+
+    public double State0Probability()
+    {
+        return this.c0.ModulusSq();
+    }
+
+    public double State1Probability()
+    {
+        return this.c1.ModulusSq();
+    }
+
     public String toString(){
 
         String SystemString = new String();
