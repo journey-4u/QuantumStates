@@ -115,6 +115,31 @@ public class Complex {
         return Z;
     }
 
+    public static Complex Multiply(Complex z,double A)
+    {
+        Complex Z = new Complex();
+        Z.a = A * z.a;
+        Z.b = A * z.b;
+        return Z;
+    }
+
+    public static Complex Divide(Complex Z, double A)
+    {
+        Complex Result = new Complex(Z.a / A,Z.b/A);
+        return Result;
+    }
+
+    public static Complex Divide(double A,Complex Z)
+    {
+        Complex Result = Multiply(A,Z.Reciprocal());
+        return Result;
+    }
+    public static Complex Divide(Complex Numerator,Complex Denominator)
+    {
+        Complex Result = Multiply(Numerator,Denominator.Reciprocal());
+        return Result;
+    }
+
     public double Modulus()
     {
         double abs = Math.sqrt((this.a * this.a + this.b * this.b));
@@ -141,27 +166,29 @@ public class Complex {
 
         return con;
     }
-/*
-        public Complex Reciprocal()
+
+    public Complex Reciprocal()
+    {
+        double ResultA = this.a / (this.a*this.a - this.b*this.b);
+        double ResultB = this.b / (this.b*this.b - this.a*this.a);
+
+        Complex Result = new Complex(ResultA, ResultB);
+        return Result;
+    }
+
+
+
+    public static Complex Pow(Complex Z, int n)
+    {
+        Complex result = new Complex(1,0);
+
+        for(int i = 1; i<= n; i++)
         {
-            var result = new Complex();
-            result = this.Conjugate() / (this.Modulus() * this.Modulus());
-            return result;
+            result = Complex.Multiply(result,Z);
         }
- */
 
-
-        public static Complex Pow(Complex Z, int n)
-        {
-            Complex result = new Complex(1,0);
-
-            for(int i = 1; i<= n; i++)
-            {
-                result = Complex.Multiply(result,Z);
-            }
-
-            return result;
-        }
+        return result;
+    }
 
     public static Boolean Equals(Complex z1, Complex z2)
     {
