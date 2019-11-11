@@ -62,18 +62,6 @@ public class Complex {
 
         return ZString;
     }
-/*
-        public void print()
-        {
-            if (this.b >= 0)
-            {
-                Console.WriteLine(string.Format("{0} + {1}i", this.a, this.b));
-            }
-            if (this.b < 0)
-            {
-                Console.WriteLine(string.Format("{0} - {1}i", this.a, -this.b));
-            }
-        }*/
 
     public static Complex Add(Complex z1, Complex z2)
     {
@@ -176,19 +164,31 @@ public class Complex {
         return Result;
     }
 
-
-
     public static Complex Pow(Complex Z, int n)
     {
         Complex result = new Complex(1,0);
 
-        for(int i = 1; i<= n; i++)
+        if(n > 0)
         {
-            result = Complex.Multiply(result,Z);
+            for (int i = 1; i <= n; i++)
+            {
+                result = Complex.Multiply(result, Z);
+            }
         }
 
-        return result;
+        if(n < 0)
+        {
+            for (int i = 1; i <= Math.abs(n); i++)
+            {
+                result = Complex.Multiply(result, Z.Reciprocal());
+            }
+        }
+
+       return result;
     }
+
+    // Curently only supports integers, need to add support for negative integers, then non-integer real numbers, then complex numbers
+
 
     public static Boolean Equals(Complex z1, Complex z2)
     {
@@ -196,6 +196,12 @@ public class Complex {
             return true;
         else
             return false;
+    }
+
+    public static Complex parseComplex(double a)
+    {
+        Complex Z = new Complex(a,0);
+        return Z;
     }
 
 }
