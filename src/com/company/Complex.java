@@ -2,41 +2,41 @@ package com.company;
 
 public class Complex {
 
-        private double a;
-        private double b;
+    private double a;
+    private double b;
 
-        public Complex()
-        {
+    public Complex()
+    {
 
-        }
+    }
 
-        public Complex(double a, double b)
-        {
-            this.a = a;
-            this.b = b;
-        }
+    public Complex(double a, double b)
+    {
+        this.a = a;
+        this.b = b;
+    }
 
-        public double getIm()
-        {
-            return this.b;
-        }
+    public double getIm()
+    {
+        return this.b;
+    }
 
-        public double getRe()
-        {
-            return this.a;
-        }
+    public double getRe()
+    {
+        return this.a;
+    }
 
-        public void setIm(double b)
-        {
-            this.b = b;
-        }
+    public void setIm(double b)
+    {
+        this.b = b;
+    }
 
-        public void setRe(double a)
-        {
-            this.a = a;
-        }
+    public void setRe(double a)
+    {
+        this.a = a;
+    }
 
-        public static void printZ(Complex Z)
+    public static void printZ(Complex Z)
     {
         if (Z.b >= 0)
         {
@@ -53,7 +53,7 @@ public class Complex {
         String ZString = new String();
         if (this.b >= 0)
         {
-           ZString = this.a + " + " + this.b + "i";
+            ZString = this.a + " + " + this.b + "i";
         }
         if (this.b < 0)
         {
@@ -73,24 +73,23 @@ public class Complex {
             {
                 Console.WriteLine(string.Format("{0} - {1}i", this.a, -this.b));
             }
-
         }*/
 
-        public static Complex Add(Complex z1, Complex z2)
-        {
-            Complex Z = new Complex();
-            Z.a = z1.a + z2.a;
-            Z.b = z1.b + z2.b;
-            return Z;
-        }
+    public static Complex Add(Complex z1, Complex z2)
+    {
+        Complex Z = new Complex();
+        Z.a = z1.a + z2.a;
+        Z.b = z1.b + z2.b;
+        return Z;
+    }
 
-        public static Complex Subtract(Complex z1, Complex z2)
-        {
-            Complex Z = new Complex();
-            Z.a = z1.a - z2.a;
-            Z.b = z1.b - z2.b;
-            return Z;
-        }
+    public static Complex Subtract(Complex z1, Complex z2)
+    {
+        Complex Z = new Complex();
+        Z.a = z1.a - z2.a;
+        Z.b = z1.b - z2.b;
+        return Z;
+    }
 
     public static Complex Minus(Complex z)
     {
@@ -100,7 +99,7 @@ public class Complex {
         return Z;
     }
 
-        public static Complex Multiply(Complex z1, Complex z2)
+    public static Complex Multiply(Complex z1, Complex z2)
     {
         Complex Z = new Complex();
         Z.a = (z1.a * z2.a) - (z1.b * z2.b);
@@ -116,72 +115,60 @@ public class Complex {
         return Z;
     }
 
-        public double Modulus()
+    public double Modulus()
     {
         double abs = Math.sqrt((this.a * this.a + this.b * this.b));
         return (abs);
     }
 
-        public double ModulusSq()
+    public double ModulusSq()
     {
         double abs =(this.a * this.a + this.b * this.b);
         return (abs);
     }
 
-        public double Argument()
-        {
-            double theta = Math.atan(this.b / this.a);
-            return (theta);
-        }
+    public double Argument()
+    {
+        double theta = Math.atan(this.b / this.a);
+        return (theta);
+    }
 
-        public Complex Conjugate()
-        {
-            var con = new Complex();
-            con.a = this.a;
-            con.b = -this.b;
+    public Complex Conjugate()
+    {
+        var con = new Complex();
+        con.a = this.a;
+        con.b = -this.b;
 
-            return con;
-        }
+        return con;
+    }
 /*
         public Complex Reciprocal()
         {
             var result = new Complex();
             result = this.Conjugate() / (this.Modulus() * this.Modulus());
-
             return result;
         }
-
  */
 
-/*
-        public static Complex operator ^(Complex z, int n)
+
+        public static Complex Pow(Complex Z, int n)
         {
-            Complex result = new Complex();
-            result.a = 1;
-            result.b = 0;
+            Complex result = new Complex(1,0);
 
-            if (n >= 0)
+            for(int i = 1; i<= n; i++)
             {
-                for (int i = 1; i <= n; i++)
-                    result *= z;
-            }
-            if (n < 0)
-            {
-                for (int i = 1; i <= Math.Abs(n); i++)
-                    result *= z;
-
-                result = result.Reciprocal();
+                result = Complex.Multiply(result,Z);
             }
 
             return result;
-        }*/
-
-        public static Boolean Equals(Complex z1, Complex z2)
-        {
-            if (z1.a == z2.a && z1.b == z2.b)
-                return true;
-            else
-                return false;
         }
+
+    public static Boolean Equals(Complex z1, Complex z2)
+    {
+        if (z1.a == z2.a && z1.b == z2.b)
+            return true;
+        else
+            return false;
+    }
 
 }
