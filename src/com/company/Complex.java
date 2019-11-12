@@ -187,7 +187,7 @@ public class Complex {
        return result;
     }
 
-    // Curently only supports integers, need to add support for negative integers, then non-integer real numbers, then complex numbers
+    // Curently only supports integers, need to add support non-integer real numbers, then complex numbers
 
 
     public static Boolean Equals(Complex z1, Complex z2)
