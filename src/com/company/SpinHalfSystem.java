@@ -31,9 +31,41 @@ public class SpinHalfSystem extends TwoStateSystem{
 
         String SystemString = new String();
 
-        SystemString = "("+this.c0.toString()+")"+"|\u2191\u3009"+ " + ("+this.c1.toString()+")"+"|\u2193\u27E9";
+        SystemString = "("+this.c0.toString()+")"+"|\u2191\u3009"+ " + ("+this.c1.toString()+")"+"|\u2193\u3009";
 
         return SystemString;
+
+/*
+        public String toString(){
+
+            String SystemString = new String();
+
+            if(Complex.Equals(this.c0,new Complex(0,0)) && !Complex.Equals(this.c1,new Complex(0,0)))
+            {
+                SystemString = "(" + this.c1.toString()+")"+"|\u2193\u3009";
+
+                if(this.c1.getIm() == 0){SystemString = this.c1.getRe()+"|\u2193\u3009";}
+                if(this.c1.getRe() == 0){SystemString = this.c1.getIm()+"i|\u2193\u3009";}
+
+            }
+
+            if(!Complex.Equals(this.c0,new Complex(0,0)) && Complex.Equals(this.c1,new Complex(0,0)))
+            {
+                SystemString = "(" + this.c0.toString()+")"+"|\u2191\u3009";
+                if(this.c0.getIm() == 0){SystemString = this.c0.getRe()+"|\u2193\u3009";}
+                if(this.c0.getRe() == 0){SystemString = this.c0.getIm()+"i|\u2193\u3009";}
+
+            }
+
+            if(!Complex.Equals(this.c0,new Complex(0,0)) && !Complex.Equals(this.c1,new Complex(0,0)))
+            {
+                SystemString = "("+this.c0.toString()+")"+"|\u2191\u3009"+ " + ("+this.c1.toString()+")"+"|\u2193\u3009";
+            }
+
+
+            return SystemString;
+
+        }*/
 
     }
 }
