@@ -16,6 +16,21 @@ public class Complex {
         this.b = b;
     }
 
+    public Complex(double A, double theta, String Input)
+    {
+        if(Input.toLowerCase() != "euler")
+        {
+            this.a = A;
+            this.b = theta;
+        }
+
+        else
+        {
+            this.a = realFromEuler(A,theta);
+            this.b = imaginaryFromEuler(A,theta);
+        }
+    }
+
     public double getIm()
     {
         return this.b;
@@ -196,6 +211,18 @@ public class Complex {
             return true;
         else
             return false;
+    }
+
+    public static double realFromEuler(double Modulus, double Argument)
+    {
+        double real = Modulus* Math.cos(Argument);
+        return real;
+    }
+
+    public static double imaginaryFromEuler(double Modulus, double Argument)
+    {
+        double real = Modulus* Math.sin(Argument);
+        return real;
     }
 
     public static Complex parseComplex(double a)
